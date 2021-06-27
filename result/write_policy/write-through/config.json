@@ -559,7 +559,7 @@
                         "maxStackSize": 67108864, 
                         "ppid": 0, 
                         "type": "Process", 
-                        "cwd": "/home/shih-chuan/gem5", 
+                        "cwd": "/home/shih-chuan/computer-organization-final-project/gem5", 
                         "pgid": 100, 
                         "simpoint": 0, 
                         "euid": 100, 
