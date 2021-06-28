@@ -24,7 +24,7 @@
 ### 說明
 在指令的地方利用`--l3_assoc`改寫l3 cache的associativity
 * 2-way改為 2
-* full-way改為64(因由Options.py預設block size為64)
+* full-way改為16384(因由Options.py預設block size為64，1MB/64 = 16384個entries)
 ![](https://i.imgur.com/cYp4KeR.png)
 
 並使用`--l1i_size`, `--l1d_size`, `--l2_size`, `--l3_size`改為benchmark要求的cache size規定
@@ -47,7 +47,7 @@
 --cpu-type=TimingSimpleCPU \
 --caches --l2cache --l3cache \
 --l1i_size=32kB --l1d_size=32kB --l2_size=128kB --l3_size=1MB \
---l3_assoc=64 \
+--l3_assoc=16384 \
 --mem-type=NVMainMemory \
 --nvmain-config=../NVmain/Config/PCM_ISSCC_2012_4GB.config
 ```
@@ -113,7 +113,7 @@ gem5預設即為write back，故不須做修改即可執行write back，以下�
     * 如圖中READ#1，#1、#5、#10會一起執行，因此#5會比#3快完成
 ### Write Through 說明
 有做過以下嘗試，但似乎沒有成功
-* 在CPU access時將所有的write packet加上write through的flag
+* 於`base.cc`在CPU access時將所有的write packet加上write through的flag
 ```c=
 BaseCache::access(PacketPtr pkt, CacheBlk *&blk, Cycles &lat,
                   PacketList &writebacks)
@@ -147,7 +147,6 @@ tRP 0    ; Precharge isn't needed. Writes occur only if needed
 ;----------------------------END CHANGE TO WRITE THROUGH-------------------------
 
 ```
-
 * 將write buffer設為0，不存到buffer直接往下送，結果無法執行完benchmark
 ```
 class L2Cache(Cache):
