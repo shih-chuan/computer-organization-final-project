@@ -559,7 +559,7 @@
                         "maxStackSize": 67108864, 
                         "ppid": 0, 
                         "type": "Process", 
-                        "cwd": "/home/shih-chuan/gem5", 
+                        "cwd": "/home/shih-chuan/computer-organization-final-project/gem5", 
                         "pgid": 100, 
                         "simpoint": 0, 
                         "euid": 100, 
@@ -811,7 +811,7 @@
                 "clk_domain": "system.cpu_clk_domain", 
                 "power_model": [], 
                 "sequential_access": false, 
-                "assoc": 64, 
+                "assoc": 16384, 
                 "warmup_percentage": 0, 
                 "cxx_class": "BaseSetAssoc", 
                 "p_state_clk_gate_max": 1000000000000, 
@@ -835,7 +835,7 @@
             "name": "l3", 
             "p_state_clk_gate_bins": 20, 
             "sequential_access": false, 
-            "assoc": 64
+            "assoc": 16384
         }, 
         "cpu_voltage_domain": {
             "name": "cpu_voltage_domain", 
