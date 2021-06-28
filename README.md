@@ -1,5 +1,5 @@
 # 1092 計算機組織 Project2
-
+所有要求的執行結果，包含指令、terminal截圖、stats.txt和config檔都放在result的資料夾中
 ## Q1. GEM5 + NVMAIN BUILD-UP (40%)
 照著教學走即可完成
 ## Q2. Enable L3 last level cache in GEM5 + NVMAIN (15%)
@@ -177,7 +177,7 @@ class L3Cache(Cache):
 --mem-type=NVMainMemory \
 --nvmain-config=../NVmain/Config/PCM_ISSCC_2012_4GB.config
 ```
-
+執行的結果放置於result/write_policy資料夾中
 ## Bonus. Design last level cache policy to reduce the energy consumption
 * 有嘗試使用pseudo LRU但似乎效能比baseline LRU差，pesudo LRU是使用[https://github.com/moulaskar/gem5](https://github.com/moulaskar/gem5)提供的方法，檔案放在`gem5/src/mem/cache/replacement_policies/`的`lru_ipv.hh`和`lru_ipv.cc`
 * 參考論文
