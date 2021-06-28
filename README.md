@@ -147,6 +147,27 @@ tRP 0    ; Precharge isn't needed. Writes occur only if needed
 ;----------------------------END CHANGE TO WRITE THROUGH-------------------------
 
 ```
+
+* 將write buffer設為0，不存到buffer直接往下送，結果無法執行完benchmark
+```
+class L2Cache(Cache):
+    assoc = 8
+    tag_latency = 20
+    data_latency = 20
+    response_latency = 20
+    mshrs = 20
+    tgts_per_mshr = 12
+    write_buffers = 0
+
+class L3Cache(Cache):
+    assoc = 64
+    tag_latency = 32
+    data_latency = 32
+    response_latency = 32
+    mshrs = 32
+    tgts_per_mshr = 24
+    write_buffers = 0
+```
 ### 測試指令-使用multiply
 ```shell=
 ./build/X86/gem5.opt configs/example/se.py -c benchmark/multiply \
